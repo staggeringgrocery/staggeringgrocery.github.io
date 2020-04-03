@@ -1,6 +1,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 <script type='text/javascript'>    
   var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1VKP2y8QT1w1EUemWhM73LMyTiPSclb-6OJLy_wD9ukw/pubhtml';
+  var tab_data;
 
   function init() {
     Tabletop.init( { key: publicSpreadsheetUrl,
@@ -10,8 +11,20 @@
 
   function showInfo(data, tabletop) {
     alert('Successfully processed!')
-    console.log(data);
+    tab_data = data;
+  }
+  
+  function showGraph(form) {
+    alert(form.zipcode, form.grocery);
+    console.log(tab_data);
   }
 
   window.addEventListener('DOMContentLoaded', init)
 </script>
+<form action="javascript:;" onsubmit="showGraph(this)">
+  <label for="zipcode">Zipcode:</label>
+  <input type="text" id="zipcode" name="zipcode"><br><br>
+  <label for="grocery">Grocery Store:</label>
+  <input type="text" id="grocery" name="grocery"><br><br>
+  <input type="submit" value="Submit">
+</form>
